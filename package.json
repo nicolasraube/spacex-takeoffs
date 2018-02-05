@@ -1,0 +1,26 @@
+{
+  "name": "spacex-takeoffs",
+  "version": "1.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "twit": "^2.2.9",
+    "data-store": "^1.0.0"
+  },
+  "engines": {
+    "node": "8.x"
+  },
+  "repository": {
+    "url": ""
+  },
+  "license": "GPL-3.0",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}
