@@ -142,7 +142,7 @@ function formatDateString(utc) {
 
 function getTweetText(launch) {
   let name = launch.rocket_name;
-  let date = formatDateString(launch.launch_date_utc);
+  let date = formatDateString(launch.launch_date_utc) + ' UTC';
   let place = launch.site_name_long;
   let link = launch.reddit_campaign;
   
