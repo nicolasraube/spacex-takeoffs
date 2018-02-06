@@ -68,7 +68,7 @@ function parseJson(json) {
     section.classList.add('launch');
     
     var h4 = document.createElement('h4');
-    h4.innerText = parseDate(flight.launch_date_utc);
+    h4.innerText = parseDate(flight.launch_date_utc) + ' UTC';
     
     var h3 = document.createElement('h3');
     h3.innerText = flight.rocket.rocket_name;
