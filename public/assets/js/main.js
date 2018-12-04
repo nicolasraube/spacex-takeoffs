@@ -57,32 +57,40 @@ $.ajax('https://api.spacexdata.com/v2/launches/upcoming', {}).success(function(d
 function parseJson(json) {
   for (var i = 0; i < json.length; i++) {
     if (i >= 5) { return; }
-    
+
     var flight = json[i];
-    
-    var link = document.createElement('a');
-    link.classList.add('launch-link');
-    link.setAttribute('href', flight.links.reddit_campaign);
-    
+
+		var href = flight.links.reddit_campaign;
+		if (href != null) {
+			console.log("href != null: " + href);
+	    var link = document.createElement('a');
+	    link.classList.add('launch-link');
+	    link.setAttribute('href', href);
+		}
+
     var section = document.createElement('section');
     section.classList.add('launch');
-    
+
     var h4 = document.createElement('h4');
     h4.innerText = parseDate(flight.launch_date_utc) + ' UTC';
-    
+
     var h3 = document.createElement('h3');
     h3.innerText = flight.rocket.rocket_name;
-    
+
     var p = document.createElement('p');
     p.innerText = flight.launch_site.site_name_long;
-    
+
     section.appendChild(h4);
     section.appendChild(h3);
     section.appendChild(p);
-    
-    link.appendChild(section);
-    
-    launchContainer.appendChild(link);
+
+		if (href != null) {
+	    link.appendChild(section);
+
+	    launchContainer.appendChild(link);
+		} else {
+			launchContainer.appendChild(section);
+		}
   }
 }
 
@@ -96,30 +104,30 @@ function displayErrorMessage() {
 
 function parseDate(utc) {
   var date = new Date(utc);
-  
+
   var dd = date.getDate();
   if (dd < 10) {
     dd = '0' + dd;
   }
-  
+
   var mm = date.getMonth() + 1;
   if (mm < 10) {
     mm = '0' + mm;
   }
-  
+
   var yyyy = date.getFullYear();
-  
+
   var hour = date.getHours();
   if (hour < 9) {
     hour = '0' + hour;
   }
-  
+
   var min = date.getMinutes();
   if (min < 9) {
     min = '0' + min;
   }
-  
+
   var dateString = dd + '.' + mm + '.' + yyyy + ' ' + hour + ':' + min;
-  
+
   return dateString;
 }

@@ -3127,7 +3127,7 @@
 
 	}
 
-.launch-link {
+.launch-link, .launch {
   display:table;
   margin:auto;
   border:0;
@@ -3146,8 +3146,11 @@
   margin:0;
 }
 .launch h3 {
-  color:#5AB97E;
+  color:#333;
   text-decoration:underline;
+}
+a .launch h3 {
+	color:#5AB97E;
 }
 
 .list-made-with {
